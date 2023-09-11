@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/genshin-teamspin/static/css/main.073c9b0a.css",
+    "main.js": "/genshin-teamspin/static/js/main.d497167e.js",
+    "static/js/787.ffe6b1db.chunk.js": "/genshin-teamspin/static/js/787.ffe6b1db.chunk.js",
+    "static/media/logo.svg": "/genshin-teamspin/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/genshin-teamspin/index.html",
+    "main.073c9b0a.css.map": "/genshin-teamspin/static/css/main.073c9b0a.css.map",
+    "main.d497167e.js.map": "/genshin-teamspin/static/js/main.d497167e.js.map",
+    "787.ffe6b1db.chunk.js.map": "/genshin-teamspin/static/js/787.ffe6b1db.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d497167e.js"
+  ]
+}
