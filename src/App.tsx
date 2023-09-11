@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import genshindb, { Language } from 'genshin-db'
+import CharacterList from "./components/CharacterList";
+import TeamBuilder from "./components/TeamBuilder";
+import useUnselectedCharacters from "./state/UnselectedCharacters";
+import { selectRandomFour } from "./lib/selector";
 
 function App() {
+  genshindb.setOptions({ queryLanguages: [ Language.English ] });
+  const names = genshindb.characters("names", { matchCategories: true })
+  const { unselectedCharacters, setUnselectedCharacters } = useUnselectedCharacters();
+  const [ team1, setTeam1 ] = useState<string[]>([]);
+  const [ team2, setTeam2 ] = useState<string[]>([]);
+
   return (
     <div className="min-h-screen bg-yellow-100">
       <div className="container mx-auto bg-white">
-        <header>Genshin team builder</header>
+        <header>
+          <h1 className="text-3xl p-10">Genshin team builder</h1>
+        </header>
         <div>
           <Tabs>
             <TabList className="flex justify-between p-4">
@@ -16,10 +29,16 @@ function App() {
             </TabList>
 
             <TabPanel>
-              <h2>Team Builder</h2>
+              <h2 className="text-2xl p-6">Team Builder</h2>
+              <TeamBuilder names={ names }
+                           unselectedCharacters={ unselectedCharacters } team1={ team1 } setTeam1={ setTeam1 }
+                           team2={ team2 } setTeam2={ setTeam2 }/>
             </TabPanel>
             <TabPanel>
-              <h2>Character Selector</h2>
+              <h2 className="text-2xl p-6">Character Selector</h2>
+              <CharacterList names={ names }
+                             unselectedCharacters={ unselectedCharacters }
+                             setUnselectedCharacters={ setUnselectedCharacters }/>
             </TabPanel>
           </Tabs>
         </div>
