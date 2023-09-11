@@ -5,7 +5,6 @@ import genshindb, { Language } from 'genshin-db'
 import CharacterList from "./components/CharacterList";
 import TeamBuilder from "./components/TeamBuilder";
 import useUnselectedCharacters from "./state/UnselectedCharacters";
-import { selectRandomFour } from "./lib/selector";
 
 function App() {
   genshindb.setOptions({ queryLanguages: [ Language.English ] });
