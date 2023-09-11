@@ -1,0 +1,21 @@
+// SquareGrid.tsx
+import React from 'react';
+
+const CharacterList: React.FC = () => {
+  return (
+    <div className="m-20">
+      <div className="grid grid-cols-4 gap-4">
+        {/* Example squares. You can loop through these dynamically based on your data. */}
+        <div className="w-40 h-40 bg-red-200"></div>
+        <div className="w-40 h-40 bg-red-300"></div>
+        <div className="w-40 h-40 bg-red-400"></div>
+        <div className="w-40 h-40 bg-red-500"></div>
+        <div className="w-40 h-40 bg-red-600"></div>
+        <div className="w-40 h-40 bg-red-700"></div>
+        {/* Add more squares as needed */}
+      </div>
+    </div>
+  );
+};
+
+export default CharacterList;
