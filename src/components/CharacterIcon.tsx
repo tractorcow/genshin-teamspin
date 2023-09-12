@@ -1,14 +1,16 @@
 import React, { MouseEventHandler } from 'react'
-import genshindb from 'genshin-db'
 import classnames from "classnames";
+import type { genshinDbType } from "../lib/genshindb";
+import blankIcon from '../images/blank-profile.webp'
 
 type CharacterProps = {
+  genshindb: genshinDbType
   name: string
   selected?: boolean,
   onClick?: MouseEventHandler
 }
 
-const CharacterIcon = ({ name, selected = true, onClick }: CharacterProps) => {
+const CharacterIcon = ({ genshindb, name, selected = true, onClick }: CharacterProps) => {
   const characterData = genshindb.characters(name)
   if (!characterData) {
     throw new Error(`Unknown character ${ name }`)
@@ -27,7 +29,7 @@ const CharacterIcon = ({ name, selected = true, onClick }: CharacterProps) => {
   return <div className={ classnames("w-40 h-52 bg-red-200 rounded-xl overflow-hidden border-2", clickable) }
               onClick={ onClick }>
     <div className={ classnames("w-40 h-40", gradient, active) }>
-      <img className="w-40 h-40" src={ characterData.images.icon } alt={ characterData.name }/>
+      <img className="w-40 h-40" src={ characterData.images?.icon || blankIcon } alt={ characterData.name }/>
     </div>
     <div className="bg-white px-4 text-lg font-bold h-12 flex items-center">
       <p className={ classnames("text-center leading-4 block w-full", active) }>{ characterData.name }</p>

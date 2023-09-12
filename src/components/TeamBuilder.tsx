@@ -3,8 +3,10 @@ import { selectRandomFour } from "../lib/selector";
 import { UnselectedCharactersHook } from "../state/UnselectedCharacters";
 import CharacterIcon from "./CharacterIcon";
 import BlankIcon from "./BlankIcon";
+import type { genshinDbType } from "../lib/genshindb";
 
 interface TeamBuilderProps {
+  genshindb: genshinDbType
   unselectedCharacters: UnselectedCharactersHook["unselectedCharacters"]
   names: string[]
   team1: string[]
@@ -13,7 +15,15 @@ interface TeamBuilderProps {
   setTeam2: (team: string[]) => void
 }
 
-const TeamBuilder = ({ names, unselectedCharacters, team1, team2, setTeam1, setTeam2 }: TeamBuilderProps) => {
+const TeamBuilder = ({
+                       genshindb,
+                       names,
+                       unselectedCharacters,
+                       team1,
+                       team2,
+                       setTeam1,
+                       setTeam2
+                     }: TeamBuilderProps) => {
 
   const generateTeam1 = () => {
     setTeam1(selectRandomFour(names, [ ...unselectedCharacters, ...team2 ]))
@@ -28,7 +38,7 @@ const TeamBuilder = ({ names, unselectedCharacters, team1, team2, setTeam1, setT
       <div className="flex flex-col items-start">
         {/* First set of four squares */ }
         <div className="grid grid-cols-4 gap-4 mb-4">
-          { team1.map(name => (<CharacterIcon name={ name }/>)) }
+          { team1.map(name => (<CharacterIcon genshindb={ genshindb } name={ name }/>)) }
           {/* Render additional divs to make the total count to 4 */ }
           { Array.from({ length: 4 - team1.length }).map((_, index) => (
             <BlankIcon key={ `item_${ index }` }/>
@@ -50,7 +60,7 @@ const TeamBuilder = ({ names, unselectedCharacters, team1, team2, setTeam1, setT
 
         {/* Second set of four squares */ }
         <div className="grid grid-cols-4 gap-4 mb-4 mt-12">
-          { team2.map(name => (<CharacterIcon name={ name }/>)) }
+          { team2.map(name => (<CharacterIcon genshindb={genshindb} name={ name }/>)) }
           {/* Render additional divs to make the total count to 4 */ }
           { Array.from({ length: 4 - team2.length }).map((_, index) => (
             <BlankIcon key={ `item_${ index }` }/>
