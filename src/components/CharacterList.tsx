@@ -17,7 +17,7 @@ const CharacterList = ({ names, unselectedCharacters, setUnselectedCharacters }:
     }
   }
   return (
-    <div className="m-16">
+    <div className="">
       <div className="flex flex-wrap gap-4">
         { names.map(name => (
           <CharacterIcon

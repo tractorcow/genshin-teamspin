@@ -2,6 +2,7 @@ import React from "react";
 import { selectRandomFour } from "../lib/selector";
 import { UnselectedCharactersHook } from "../state/UnselectedCharacters";
 import CharacterIcon from "./CharacterIcon";
+import BlankIcon from "./BlankIcon";
 
 interface TeamBuilderProps {
   unselectedCharacters: UnselectedCharactersHook["unselectedCharacters"]
@@ -23,14 +24,14 @@ const TeamBuilder = ({ names, unselectedCharacters, team1, team2, setTeam1, setT
   }
 
   return (
-    <div className="m-20">
+    <div className="">
       <div className="flex flex-col items-start">
         {/* First set of four squares */ }
         <div className="grid grid-cols-4 gap-4 mb-4">
           { team1.map(name => (<CharacterIcon name={ name }/>)) }
           {/* Render additional divs to make the total count to 4 */ }
           { Array.from({ length: 4 - team1.length }).map((_, index) => (
-            <div className="w-40 h-40 bg-blue-200"></div>
+            <BlankIcon key={ `item_${ index }` }/>
           )) }
         </div>
 
@@ -48,11 +49,11 @@ const TeamBuilder = ({ names, unselectedCharacters, team1, team2, setTeam1, setT
         </div>
 
         {/* Second set of four squares */ }
-        <div className="grid grid-cols-4 gap-4 mb-4">
+        <div className="grid grid-cols-4 gap-4 mb-4 mt-12">
           { team2.map(name => (<CharacterIcon name={ name }/>)) }
           {/* Render additional divs to make the total count to 4 */ }
           { Array.from({ length: 4 - team2.length }).map((_, index) => (
-            <div className="w-40 h-40 bg-blue-200"></div>
+            <BlankIcon key={ `item_${ index }` }/>
           )) }
         </div>
 
