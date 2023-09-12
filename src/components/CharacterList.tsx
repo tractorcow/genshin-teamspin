@@ -2,12 +2,14 @@
 import React from 'react';
 import CharacterIcon from "./CharacterIcon";
 import { UnselectedCharactersHook } from "../state/UnselectedCharacters";
+import type { genshinDbType } from "../lib/genshindb";
 
 interface CharacterListProps extends UnselectedCharactersHook {
+  genshindb: genshinDbType
   names: string[]
 }
 
-const CharacterList = ({ names, unselectedCharacters, setUnselectedCharacters }: CharacterListProps) => {
+const CharacterList = ({ genshindb, names, unselectedCharacters, setUnselectedCharacters }: CharacterListProps) => {
   const toggle = (name: string) => {
     console.log(`Toggle ${ name }`)
     if (unselectedCharacters.includes(name)) {
@@ -21,6 +23,7 @@ const CharacterList = ({ names, unselectedCharacters, setUnselectedCharacters }:
       <div className="flex flex-wrap gap-4">
         { names.map(name => (
           <CharacterIcon
+            genshindb={ genshindb }
             name={ name }
             onClick={ () => toggle(name) }
             selected={ !unselectedCharacters.includes(name) }/>)) }
