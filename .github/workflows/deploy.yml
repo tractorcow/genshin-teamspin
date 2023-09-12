@@ -17,13 +17,10 @@ jobs:
           node-version: '18'
       - name: Install Dependencies
         run: npm install
-      - name: Build Project
-        run: |
-          export NODE_OPTIONS="--max_old_space_size=4096"
-          npm run build
       - name: Deploy with gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          export NODE_OPTIONS="--max_old_space_size=4096"
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
