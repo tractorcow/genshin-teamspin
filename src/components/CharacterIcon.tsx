@@ -24,12 +24,13 @@ const CharacterIcon = ({ name, selected = true, onClick }: CharacterProps) => {
   const active = selected ? "opacity-100" : "opacity-50"
   const clickable = onClick ? "cursor-pointer" : ""
 
-  return <div className={ classnames("w-40 h-52 bg-red-200", active, clickable) } onClick={ onClick }>
-    <div className={ classnames("w-40 h-40", gradient) }>
+  return <div className={ classnames("w-40 h-52 bg-red-200 rounded-xl overflow-hidden border-2", clickable) }
+              onClick={ onClick }>
+    <div className={ classnames("w-40 h-40", gradient, active) }>
       <img className="w-40 h-40" src={ characterData.images.icon } alt={ characterData.name }/>
     </div>
-    <div className="bg-white text-center p-4 text-xl font-bold h-12">
-      { characterData.name }
+    <div className="bg-white px-4 text-lg font-bold h-12 flex items-center">
+      <p className={ classnames("text-center leading-4 block w-full", active) }>{ characterData.name }</p>
     </div>
   </div>
 }
