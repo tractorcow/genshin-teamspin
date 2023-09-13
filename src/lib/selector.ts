@@ -425,7 +425,8 @@ export const teamTypes: Array<TypeGroup> = [
       },
       {
         name: 'Double Dendro',
-        description: 'Two dendro for reaction elemental bonus',
+        description:
+          'Two dendro, and something they can react with for reaction elemental bonus',
         members: [
           { element: Element.Dendro },
           { element: Element.Dendro },

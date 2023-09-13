@@ -73,7 +73,7 @@ const TeamGenerator = ({
               value={teamType}
               onChange={(e) => setTeamType(e.target.value)}
             >
-              <option value="">Select team type</option>
+              <option value="">Random team</option>
               {teamTypes.map((group) => (
                 <optgroup key={group.group} label={group.group}>
                   {group.types.map((type) => (
