@@ -1,4 +1,5 @@
 import type { Character } from 'genshin-db'
+import { CompleteTeam } from './teams'
 
 /**
  * A builder generates a random team
@@ -12,7 +13,7 @@ export interface Builder {
   build: (
     characters: Array<Character>,
     required?: Array<Character>
-  ) => [Character, Character, Character, Character] | undefined
+  ) => CompleteTeam | undefined
 }
 
 /**

@@ -1,6 +1,6 @@
 import { Builder, Filter } from '../../types/selector'
 import { Character } from 'genshin-db'
-import { Gender, TeamType } from '../../types/teams'
+import { CompleteTeam, Gender, TeamType } from '../../types/teams'
 import { RandomBuilder } from './RandomBuilder'
 import { GenderFilter } from '../filters/GenderFilter'
 import { TeamTypeFilter } from '../filters/TeamTypeFilter'
@@ -42,7 +42,7 @@ export class OptionBuilder implements Builder {
   build(
     characters: Array<Character>,
     required?: Array<Character>
-  ): [Character, Character, Character, Character] | undefined {
+  ): CompleteTeam | undefined {
     // Limit pool based on all filters
     const pool = this.getFilters().reduce(
       (pool, filter) => filter.filter(pool),

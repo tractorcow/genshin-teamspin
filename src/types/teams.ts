@@ -1,6 +1,6 @@
 import type { Character } from 'genshin-db'
 
-export enum Element {
+export enum ElementType {
   Cryo = 'Cryo',
   Pyro = 'Pyro',
   Hydro = 'Hydro',
@@ -28,7 +28,7 @@ export type TeamMemberType = {
   // For specific named character
   name?: string
   // 'same' means same as any other character, different means different to all other characters
-  element?: Element | 'same' | 'different' | Array<Element>
+  element?: ElementType | 'same' | 'different' | Array<ElementType>
   // for specific weapon type
   weapontype?: WeaponType
   // gender

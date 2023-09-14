@@ -1,5 +1,7 @@
 import { Builder } from '../../types/selector'
 import { Character } from 'genshin-db'
+import { CompleteTeam } from '../../types/teams'
+import { filterNotNamed } from '../queries'
 
 /**
  * Build four random team members
@@ -8,12 +10,17 @@ export class RandomBuilder implements Builder {
   build(
     characters: Array<Character>,
     required?: Array<Character>
-  ): [Character, Character, Character, Character] | undefined {
-    // Build pool of remaining characters
-    const pool = [...characters]
-
+  ): CompleteTeam | undefined {
     // Build initial pool
     const selected: Array<Character> = required ? [...required] : []
+
+    // Build pool of remaining characters (not including required)
+    const pool = required
+      ? filterNotNamed(
+          characters,
+          required.map((r) => r.name)
+        )
+      : [...characters]
 
     // Randomly select 4 names from the filtered list
     while (pool.length > 0 && selected.length < 4) {

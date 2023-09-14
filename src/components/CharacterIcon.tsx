@@ -2,6 +2,7 @@ import React, { MouseEventHandler } from 'react'
 import classnames from 'classnames'
 import blankIcon from '../images/blank-profile.webp'
 import type { Character } from 'genshin-db'
+import ElementIcon from './ElementIcon'
 
 type CharacterProps = {
   character: Character
@@ -35,12 +36,15 @@ const CharacterIcon = ({
       )}
       onClick={onClick}
     >
-      <div className={classnames('w-40 h-40', gradient, active)}>
+      <div className={classnames('w-40 h-40 relative', gradient, active)}>
         <img
           className="w-40 h-40"
           src={character.images?.icon || blankIcon}
           alt={character.name}
         />
+        <div className="absolute left-1 top-1 w-8 h-8 rounded-2xl bg-gray-700 p-1">
+          <ElementIcon element={character.element} />
+        </div>
       </div>
       <div className="bg-white px-4 text-lg font-bold h-12 flex items-center">
         <p className={classnames('text-center leading-4 block w-full', active)}>

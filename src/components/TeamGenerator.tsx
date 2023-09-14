@@ -2,7 +2,7 @@ import CharacterIcon from './CharacterIcon'
 import BlankIcon from './BlankIcon'
 import React, { useState } from 'react'
 import { Character } from 'genshin-db'
-import { filterNamed, findTeamType } from '../lib/queries'
+import { filterNamed, findTeamType, healers } from '../lib/queries'
 import teamTypes from '../lib/teamTypes'
 import { Gender } from '../types/teams'
 import { OptionBuilder } from '../lib/builders/OptionBuilder'
@@ -26,6 +26,8 @@ const TeamGenerator = ({
   const [gender, setGender] = useState<Gender | undefined>(undefined)
   const [includeHealer, setIncludeHealer] = useState(false)
   const selectedType = findTeamType(teamType, teamTypes)
+
+  const healerTooltip = `Note: Healers list includes ${healers.join(', ')}`
 
   // Trigger option builder
   const generateTeam = () => {
@@ -73,7 +75,7 @@ const TeamGenerator = ({
       </div>
 
       {showOptions && (
-        <div className="p-4 border rounded border-black w-full max-w-md mx-auto">
+        <div className="p-4 border rounded border-gray-400 w-full max-w-md mx-auto">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Team Type
@@ -146,7 +148,11 @@ const TeamGenerator = ({
                 checked={includeHealer}
                 onChange={() => setIncludeHealer(!includeHealer)}
               />
-              <span className="ml-2">Include at least one healer</span>
+              <span className="ml-2">
+                <a className="underline cursor-pointer" title={healerTooltip}>
+                  Include at least one healer
+                </a>
+              </span>
             </label>
           </div>
         </div>

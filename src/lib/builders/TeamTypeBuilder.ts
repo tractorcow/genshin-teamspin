@@ -2,7 +2,7 @@ import { Builder } from '../../types/selector'
 import type { Character } from 'genshin-db'
 import {
   CompleteTeam,
-  Element,
+  ElementType,
   TeamMemberType,
   TeamType,
 } from '../../types/teams'
@@ -26,8 +26,8 @@ export class TeamTypeBuilder implements Builder {
   /**
    * Get all elements that 100% will be a part of this team
    */
-  getFixedElements(): Array<Element> {
-    let elements: Array<Element> = []
+  getFixedElements(): Array<ElementType> {
+    let elements: Array<ElementType> = []
     for (const member of this.teamType.members) {
       if (isElement(member.element)) {
         elements = [...elements, member.element]
@@ -47,17 +47,17 @@ export class TeamTypeBuilder implements Builder {
   matchesRule(
     character: Character,
     teamMemberType: TeamMemberType,
-    currentElements: Array<Element>
+    currentElements: Array<ElementType>
   ): boolean {
     // Match name (note: Ignore other rules)
-    if (teamMemberType.name === character.name) {
-      return true
+    if (teamMemberType.name) {
+      return teamMemberType.name === character.name
     }
 
     // Fail "must have different element" check
     if (
       teamMemberType.element === 'different' &&
-      currentElements.includes(character.element as Element)
+      currentElements.includes(character.element as ElementType)
     ) {
       return false
     }
@@ -65,7 +65,7 @@ export class TeamTypeBuilder implements Builder {
     // Fail "must have same element" check
     if (
       teamMemberType.element === 'same' &&
-      !currentElements.includes(character.element as Element)
+      !currentElements.includes(character.element as ElementType)
     ) {
       return false
     }
@@ -81,7 +81,7 @@ export class TeamTypeBuilder implements Builder {
     // Fail "must be one of element" list
     if (
       isArrayOfElements(teamMemberType.element) &&
-      !teamMemberType.element.includes(character.element as Element)
+      !teamMemberType.element.includes(character.element as ElementType)
     ) {
       return false
     }
@@ -128,7 +128,7 @@ export class TeamTypeBuilder implements Builder {
         if (this.matchesRule(character, teamMemberType, currentElements)) {
           // Place this character, remember their element
           placements[i] = character
-          currentElements.push(character.element as Element)
+          currentElements.push(character.element as ElementType)
           return true
         }
       }

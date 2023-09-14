@@ -11,11 +11,15 @@ import classnames from 'classnames'
 
 function App() {
   const { genshindb, loading } = useGenshinDataLoader()
-  const { unselectedCharacters, setUnselectedCharacters } =
-    useUnselectedCharacters()
+  const {
+    unselectedCharacters,
+    setUnselectedCharacters,
+    mcElement,
+    setMCElement,
+  } = useUnselectedCharacters()
   const [tabIndex, setTabIndex] = useState(0)
 
-  const characters = loading ? [] : getCharacters(genshindb)
+  const characters = loading ? [] : getCharacters(genshindb, mcElement)
   const ownedCharacters = filterNotNamed(characters, unselectedCharacters)
 
   return (
@@ -60,6 +64,8 @@ function App() {
                   Character Selector
                 </h2>
                 <CharacterList
+                  mcElement={mcElement}
+                  setMCElement={setMCElement}
                   characters={characters}
                   unselectedCharacters={unselectedCharacters}
                   setUnselectedCharacters={setUnselectedCharacters}

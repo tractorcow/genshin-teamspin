@@ -1,6 +1,6 @@
 import { Filter } from '../../types/selector'
 import { Character } from 'genshin-db'
-import { Element, TeamType, WeaponType } from '../../types/teams'
+import { ElementType, TeamType, WeaponType } from '../../types/teams'
 import { isArrayOfElements, isElement } from '../queries'
 
 /**
@@ -16,8 +16,8 @@ export class TeamTypeFilter implements Filter {
   /**
    * Get all elements allowed in this team
    */
-  getAllowedElements(): Array<Element> | undefined {
-    let elements: Array<Element> = []
+  getAllowedElements(): Array<ElementType> | undefined {
+    let elements: Array<ElementType> = []
     for (const member of this.teamType.members) {
       if (!member.element || member.element === 'different') {
         // No element restriction on this item, so all allowed
@@ -61,7 +61,7 @@ export class TeamTypeFilter implements Filter {
     return characters.filter(
       (character) =>
         (!allowedElements ||
-          allowedElements.includes(character.element as Element)) &&
+          allowedElements.includes(character.element as ElementType)) &&
         (!allowedWeapons ||
           allowedWeapons.includes(character.weapontype as WeaponType))
     )

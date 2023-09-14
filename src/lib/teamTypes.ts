@@ -1,4 +1,4 @@
-import { Element, TypeGroup } from '../types/teams'
+import { ElementType, TypeGroup } from '../types/teams'
 
 const teamTypes: Array<TypeGroup> = [
   {
@@ -8,22 +8,22 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Quicken',
         description: 'Dendro and Electro',
         members: [
-          { element: Element.Dendro },
-          { element: Element.Electro },
+          { element: ElementType.Dendro },
+          { element: ElementType.Electro },
           {
             element: [
-              Element.Dendro,
-              Element.Electro,
-              Element.Anemo,
-              Element.Geo,
+              ElementType.Dendro,
+              ElementType.Electro,
+              ElementType.Anemo,
+              ElementType.Geo,
             ],
           },
           {
             element: [
-              Element.Dendro,
-              Element.Electro,
-              Element.Anemo,
-              Element.Geo,
+              ElementType.Dendro,
+              ElementType.Electro,
+              ElementType.Anemo,
+              ElementType.Geo,
             ],
           },
         ],
@@ -32,21 +32,21 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Swirl',
         description: 'A team that can create swirl with anemo',
         members: [
-          { element: Element.Anemo },
+          { element: ElementType.Anemo },
           {
             element: [
-              Element.Cryo,
-              Element.Hydro,
-              Element.Electro,
-              Element.Pyro,
+              ElementType.Cryo,
+              ElementType.Hydro,
+              ElementType.Electro,
+              ElementType.Pyro,
             ],
           },
           {
             element: [
-              Element.Cryo,
-              Element.Hydro,
-              Element.Electro,
-              Element.Pyro,
+              ElementType.Cryo,
+              ElementType.Hydro,
+              ElementType.Electro,
+              ElementType.Pyro,
             ],
           },
           { element: 'different' },
@@ -56,21 +56,21 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Crystalize',
         description: 'A team that can make shields',
         members: [
-          { element: Element.Geo },
+          { element: ElementType.Geo },
           {
             element: [
-              Element.Cryo,
-              Element.Hydro,
-              Element.Electro,
-              Element.Pyro,
+              ElementType.Cryo,
+              ElementType.Hydro,
+              ElementType.Electro,
+              ElementType.Pyro,
             ],
           },
           {
             element: [
-              Element.Cryo,
-              Element.Hydro,
-              Element.Electro,
-              Element.Pyro,
+              ElementType.Cryo,
+              ElementType.Hydro,
+              ElementType.Electro,
+              ElementType.Pyro,
             ],
           },
           { element: 'different' },
@@ -80,22 +80,22 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Electro-Charged',
         description: 'Hydro and electro (electro DoT)',
         members: [
-          { element: Element.Electro },
-          { element: Element.Hydro },
+          { element: ElementType.Electro },
+          { element: ElementType.Hydro },
           {
             element: [
-              Element.Hydro,
-              Element.Electro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Hydro,
+              ElementType.Electro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
           {
             element: [
-              Element.Hydro,
-              Element.Electro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Hydro,
+              ElementType.Electro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
         ],
@@ -104,22 +104,22 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Overloaded',
         description: 'Pyro and electro (AoE Pyro DoT)',
         members: [
-          { element: Element.Electro },
-          { element: Element.Pyro },
+          { element: ElementType.Electro },
+          { element: ElementType.Pyro },
           {
             element: [
-              Element.Pyro,
-              Element.Electro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Pyro,
+              ElementType.Electro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
           {
             element: [
-              Element.Pyro,
-              Element.Electro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Pyro,
+              ElementType.Electro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
         ],
@@ -128,13 +128,23 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Freeze',
         description: 'Cryo and hydro to immobilise',
         members: [
-          { element: Element.Cryo },
-          { element: Element.Hydro },
+          { element: ElementType.Cryo },
+          { element: ElementType.Hydro },
           {
-            element: [Element.Cryo, Element.Hydro, Element.Geo, Element.Anemo],
+            element: [
+              ElementType.Cryo,
+              ElementType.Hydro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
           },
           {
-            element: [Element.Cryo, Element.Hydro, Element.Geo, Element.Anemo],
+            element: [
+              ElementType.Cryo,
+              ElementType.Hydro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
           },
         ],
       },
@@ -142,32 +152,46 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Melt',
         description: 'Pyro and cryo',
         members: [
-          { element: Element.Cryo },
-          { element: Element.Pyro },
-          { element: [Element.Cryo, Element.Pyro, Element.Geo, Element.Anemo] },
-          { element: [Element.Cryo, Element.Pyro, Element.Geo, Element.Anemo] },
+          { element: ElementType.Cryo },
+          { element: ElementType.Pyro },
+          {
+            element: [
+              ElementType.Cryo,
+              ElementType.Pyro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
+          },
+          {
+            element: [
+              ElementType.Cryo,
+              ElementType.Pyro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
+          },
         ],
       },
       {
         name: 'Superconduct',
         description: 'Cryo and Electro',
         members: [
-          { element: Element.Cryo },
-          { element: Element.Electro },
+          { element: ElementType.Cryo },
+          { element: ElementType.Electro },
           {
             element: [
-              Element.Cryo,
-              Element.Electro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Cryo,
+              ElementType.Electro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
           {
             element: [
-              Element.Cryo,
-              Element.Electro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Cryo,
+              ElementType.Electro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
         ],
@@ -176,23 +200,47 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Vaporise',
         description: 'Pyro and hydro',
         members: [
-          { element: Element.Cryo },
-          { element: Element.Hydro },
-          { element: [Element.Cryo, Element.Pyro, Element.Geo, Element.Anemo] },
-          { element: [Element.Cryo, Element.Pyro, Element.Geo, Element.Anemo] },
+          { element: ElementType.Cryo },
+          { element: ElementType.Hydro },
+          {
+            element: [
+              ElementType.Cryo,
+              ElementType.Pyro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
+          },
+          {
+            element: [
+              ElementType.Cryo,
+              ElementType.Pyro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
+          },
         ],
       },
       {
         name: 'Burning',
         description: 'Pyro and dendro',
         members: [
-          { element: Element.Pyro },
-          { element: Element.Dendro },
+          { element: ElementType.Pyro },
+          { element: ElementType.Dendro },
           {
-            element: [Element.Dendro, Element.Pyro, Element.Geo, Element.Anemo],
+            element: [
+              ElementType.Dendro,
+              ElementType.Pyro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
           },
           {
-            element: [Element.Dendro, Element.Pyro, Element.Geo, Element.Anemo],
+            element: [
+              ElementType.Dendro,
+              ElementType.Pyro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
           },
         ],
       },
@@ -200,22 +248,22 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Bloom',
         description: 'Hydro and dendro',
         members: [
-          { element: Element.Hydro },
-          { element: Element.Dendro },
+          { element: ElementType.Hydro },
+          { element: ElementType.Dendro },
           {
             element: [
-              Element.Dendro,
-              Element.Hydro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Dendro,
+              ElementType.Hydro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
           {
             element: [
-              Element.Dendro,
-              Element.Hydro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Dendro,
+              ElementType.Hydro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
         ],
@@ -229,11 +277,16 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Super-Freeze',
         description: 'Hydro and double cryo for extra crit',
         members: [
-          { element: Element.Cryo },
-          { element: Element.Cryo },
-          { element: Element.Hydro },
+          { element: ElementType.Cryo },
+          { element: ElementType.Cryo },
+          { element: ElementType.Hydro },
           {
-            element: [Element.Cryo, Element.Hydro, Element.Geo, Element.Anemo],
+            element: [
+              ElementType.Cryo,
+              ElementType.Hydro,
+              ElementType.Geo,
+              ElementType.Anemo,
+            ],
           },
         ],
       },
@@ -241,16 +294,16 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Hyperbloom',
         description: 'Hydro, dendro, and electro',
         members: [
-          { element: Element.Hydro },
-          { element: Element.Dendro },
-          { element: Element.Electro },
+          { element: ElementType.Hydro },
+          { element: ElementType.Dendro },
+          { element: ElementType.Electro },
           {
             element: [
-              Element.Dendro,
-              Element.Hydro,
-              Element.Electro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Dendro,
+              ElementType.Hydro,
+              ElementType.Electro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
         ],
@@ -259,16 +312,16 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Burgeon',
         description: 'Hydro, dendro, and pyro',
         members: [
-          { element: Element.Hydro },
-          { element: Element.Dendro },
-          { element: Element.Pyro },
+          { element: ElementType.Hydro },
+          { element: ElementType.Dendro },
+          { element: ElementType.Pyro },
           {
             element: [
-              Element.Dendro,
-              Element.Hydro,
-              Element.Pyro,
-              Element.Geo,
-              Element.Anemo,
+              ElementType.Dendro,
+              ElementType.Hydro,
+              ElementType.Pyro,
+              ElementType.Geo,
+              ElementType.Anemo,
             ],
           },
         ],
@@ -278,15 +331,15 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Aggravate',
         description: 'Dendro and two electro for aggravate damage',
         members: [
-          { element: Element.Dendro },
-          { element: Element.Electro },
-          { element: Element.Electro },
+          { element: ElementType.Dendro },
+          { element: ElementType.Electro },
+          { element: ElementType.Electro },
           {
             element: [
-              Element.Dendro,
-              Element.Electro,
-              Element.Anemo,
-              Element.Geo,
+              ElementType.Dendro,
+              ElementType.Electro,
+              ElementType.Anemo,
+              ElementType.Geo,
             ],
           },
         ],
@@ -295,15 +348,15 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Spread',
         description: 'Electro with two dendro for spread damage',
         members: [
-          { element: Element.Dendro },
-          { element: Element.Dendro },
-          { element: Element.Electro },
+          { element: ElementType.Dendro },
+          { element: ElementType.Dendro },
+          { element: ElementType.Electro },
           {
             element: [
-              Element.Dendro,
-              Element.Electro,
-              Element.Anemo,
-              Element.Geo,
+              ElementType.Dendro,
+              ElementType.Electro,
+              ElementType.Anemo,
+              ElementType.Geo,
             ],
           },
         ],
@@ -327,8 +380,8 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Double Geo',
         description: 'Two geo for geo damage bonus',
         members: [
-          { element: Element.Geo },
-          { element: Element.Geo },
+          { element: ElementType.Geo },
+          { element: ElementType.Geo },
           { element: 'different' },
           { element: 'different' },
         ],
@@ -337,8 +390,8 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Double Pyro',
         description: 'Two pyro for attack bonus',
         members: [
-          { element: Element.Pyro },
-          { element: Element.Pyro },
+          { element: ElementType.Pyro },
+          { element: ElementType.Pyro },
           { element: 'different' },
           { element: 'different' },
         ],
@@ -347,8 +400,8 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Double Cryo',
         description: 'Two cryo for crit rate bonus',
         members: [
-          { element: Element.Cryo },
-          { element: Element.Cryo },
+          { element: ElementType.Cryo },
+          { element: ElementType.Cryo },
           { element: 'different' },
           { element: 'different' },
         ],
@@ -357,8 +410,8 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Double Hydro',
         description: 'Two hydro for HP bonus',
         members: [
-          { element: Element.Hydro },
-          { element: Element.Hydro },
+          { element: ElementType.Hydro },
+          { element: ElementType.Hydro },
           { element: 'different' },
           { element: 'different' },
         ],
@@ -367,8 +420,8 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Double Anemo',
         description: 'Two anemo for movement bonus',
         members: [
-          { element: Element.Anemo },
-          { element: Element.Anemo },
+          { element: ElementType.Anemo },
+          { element: ElementType.Anemo },
           { element: 'different' },
           { element: 'different' },
         ],
@@ -378,11 +431,11 @@ const teamTypes: Array<TypeGroup> = [
         description:
           'Two dendro, and something they can react with for reaction elemental bonus',
         members: [
-          { element: Element.Dendro },
-          { element: Element.Dendro },
+          { element: ElementType.Dendro },
+          { element: ElementType.Dendro },
           {
             // Dendro resonance needs one of these to actually have effect
-            element: [Element.Hydro, Element.Pyro, Element.Electro],
+            element: [ElementType.Hydro, ElementType.Pyro, ElementType.Electro],
           },
           { element: 'different' },
         ],
@@ -391,8 +444,8 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Double Elecro',
         description: 'Two electro, two non-electro',
         members: [
-          { element: Element.Electro },
-          { element: Element.Electro },
+          { element: ElementType.Electro },
+          { element: ElementType.Electro },
           { element: 'different' },
           { element: 'different' },
         ],
@@ -406,9 +459,9 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Gorou Triple-Geo',
         description: 'Miss Hina and her entourage',
         members: [
-          { element: Element.Geo, name: 'Gorou' },
-          { element: Element.Geo },
-          { element: Element.Geo },
+          { element: ElementType.Geo, name: 'Gorou' },
+          { element: ElementType.Geo },
+          { element: ElementType.Geo },
           { element: 'different' },
         ],
       },
@@ -416,10 +469,10 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Nilou Bountiful Bloom',
         description: 'Nilou and hydro / dendro only for her special reaction',
         members: [
-          { element: Element.Hydro, name: 'Nilou' },
-          { element: Element.Dendro },
-          { element: [Element.Dendro, Element.Hydro] },
-          { element: [Element.Dendro, Element.Hydro] },
+          { element: ElementType.Hydro, name: 'Nilou' },
+          { element: ElementType.Dendro },
+          { element: [ElementType.Dendro, ElementType.Hydro] },
+          { element: [ElementType.Dendro, ElementType.Hydro] },
         ],
       },
       {
@@ -427,9 +480,9 @@ const teamTypes: Array<TypeGroup> = [
         description:
           "Includes all elements required to defeat John's special triple shields",
         members: [
-          { element: Element.Dendro }, // Electro / Hydro shield
-          { element: Element.Hydro }, // Pyro shield
-          { element: Element.Pyro }, // Electro / Cryo shield
+          { element: ElementType.Dendro }, // Electro / Hydro shield
+          { element: ElementType.Hydro }, // Pyro shield
+          { element: ElementType.Pyro }, // Electro / Cryo shield
           {},
         ],
       },

@@ -1,14 +1,42 @@
 import { genshinDbType } from './genshindb'
 import type { Character } from 'genshin-db'
-import { Element, Gender, TeamType, TypeGroup } from '../types/teams'
+import { ElementType, TeamType, TypeGroup } from '../types/teams'
+
+export const healers = [
+  // 'Gorou', // Only @C4
+  // 'Xingqiu', // Questionable?
+  'Noelle',
+  'Baizhu',
+  'Mika',
+  'Yaoyao',
+  'Dori',
+  'Barbara',
+  'Sayu',
+  'Diona',
+  'Qiqi',
+  'Kuki Shinobu',
+  'Jean',
+  'Sangonomiya Kokomi',
+  'Bennett',
+]
 
 /**
  * Get all characters
  * @param genshindb
+ * @param mcElement
  */
-export const getCharacters = (genshindb: genshinDbType): Array<Character> => {
+export const getCharacters = (
+  genshindb: genshinDbType,
+  mcElement: ElementType
+): Array<Character> => {
   const names = genshindb.characters('names', { matchCategories: true })
-  return names.map((name) => genshindb.characters(name) as Character)
+  return names.map((name) => {
+    const character = genshindb.characters(name) as Character
+    if (['Lumine', 'Aether'].includes(character.name)) {
+      character.element = `${mcElement}`
+    }
+    return character
+  })
 }
 
 /**
@@ -21,6 +49,15 @@ export const filterNamed = (
   names: Array<string>
 ) => {
   return characters.filter((character) => names.includes(character.name))
+}
+
+/**
+ * Get healers from this list
+ *
+ * @param characters
+ */
+export const filterHealers = (characters: Array<Character>) => {
+  return filterNamed(characters, healers)
 }
 
 /**
@@ -68,11 +105,11 @@ export const findTeamType = (
 
 export const isArrayOfElements = (
   elements: any
-): elements is Array<Element> => {
+): elements is Array<ElementType> => {
   return Array.isArray(elements)
 }
 
-export const isElement = (element: any): element is Element => {
+export const isElement = (element: any): element is ElementType => {
   return (
     element &&
     typeof element === 'string' &&
