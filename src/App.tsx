@@ -1,66 +1,92 @@
-import React, { useState } from 'react';
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import CharacterList from "./components/CharacterList";
-import TeamBuilder from "./components/TeamBuilder";
-import useUnselectedCharacters from "./state/UnselectedCharacters";
+import React, { useState } from 'react'
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
+import CharacterList from './components/CharacterList'
+import TeamList from './components/TeamList'
+import useUnselectedCharacters from './state/UnselectedCharacters'
 import background from './images/background.jpg'
-import useGenshinDataLoader from "./state/GenshinDataLoader";
+import useGenshinDataLoader from './state/GenshinDataLoader'
+import { filterNotNamed, getCharacters } from './lib/queries'
+import Loading from './components/Loading'
+import classnames from 'classnames'
 
 function App() {
-  const { genshindb, loading } = useGenshinDataLoader();
-  const { unselectedCharacters, setUnselectedCharacters } = useUnselectedCharacters();
-  const [ team1, setTeam1 ] = useState<string[]>([]);
-  const [ team2, setTeam2 ] = useState<string[]>([]);
-  if (loading) {
-    return <div>Loading...</div>
-  }
+  const { genshindb, loading } = useGenshinDataLoader()
+  const {
+    unselectedCharacters,
+    setUnselectedCharacters,
+    mcElement,
+    setMCElement,
+  } = useUnselectedCharacters()
+  const [tabIndex, setTabIndex] = useState(0)
 
-  const names = genshindb.characters("names", { matchCategories: true })
+  const characters = loading ? [] : getCharacters(genshindb, mcElement)
+  const ownedCharacters = filterNotNamed(characters, unselectedCharacters)
 
   return (
-    <div className="min-h-screen bg-yellow-100 bg-cover bg-center"
-         style={ { backgroundImage: `url(${ background })` } }>
-
+    <div
+      className="min-h-screen bg-yellow-100 bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: `url(${background})` }}
+    >
       <div className="container w-[1024px] px-20 mx-auto bg-opacity-90 bg-white min-h-screen">
         <header className="py-12">
-          <h1 className="text-3xl pb-4 font-bold">Genshin Impact - Random Team Builder</h1>
-          <p>This is a simple tool you can use to generate random teams for Spiral Abyss. Use "Character Selector" to
-            flag the characters you have available, and then "Team Builder" to make a random team</p>
+          <h1 className="text-3xl pb-4 font-bold">
+            Genshin Impact - Random Team Builder
+          </h1>
+          <p>
+            This is a simple tool you can use to generate random teams for
+            Spiral Abyss. Use "Character Selector" to flag the characters you
+            have available, and then "Team Builder" to make a random team
+          </p>
         </header>
         <div>
-          <Tabs>
-            <TabList className="mb-4 flex flex-row gap-6">
-              <Tab className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Team
-                Builder</Tab>
-              <Tab className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Character
-                Selector</Tab>
-            </TabList>
+          {loading && <Loading />}
+          {!loading && (
+            <Tabs
+              forceRenderTabPanel={true}
+              selectedIndex={tabIndex}
+              onSelect={(index) => setTabIndex(index)}
+            >
+              <TabList className="mb-4 flex flex-row gap-6">
+                <Tab className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+                  Team Builder
+                </Tab>
+                <Tab className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+                  Character Selector
+                </Tab>
+              </TabList>
 
-            <TabPanel>
-              <h2 className="text-2xl pb-6 pt-12 font-bold">Team Builder</h2>
-              <TeamBuilder genshindb={ genshindb }
-                           names={ names }
-                           unselectedCharacters={ unselectedCharacters } team1={ team1 } setTeam1={ setTeam1 }
-                           team2={ team2 } setTeam2={ setTeam2 }/>
-            </TabPanel>
-            <TabPanel>
-              <h2 className="text-2xl pb-6 pt-12 font-bold">Character Selector</h2>
-              <CharacterList genshindb={ genshindb }
-                             names={ names }
-                             unselectedCharacters={ unselectedCharacters }
-                             setUnselectedCharacters={ setUnselectedCharacters }/>
-            </TabPanel>
-          </Tabs>
+              <TabPanel className={classnames({ hidden: tabIndex !== 0 })}>
+                <h2 className="text-2xl pb-6 pt-12 font-bold">Team Builder</h2>
+                <TeamList characters={ownedCharacters} />
+              </TabPanel>
+              <TabPanel className={classnames({ hidden: tabIndex !== 1 })}>
+                <h2 className="text-2xl pb-6 pt-12 font-bold">
+                  Character Selector
+                </h2>
+                <CharacterList
+                  mcElement={mcElement}
+                  setMCElement={setMCElement}
+                  characters={characters}
+                  unselectedCharacters={unselectedCharacters}
+                  setUnselectedCharacters={setUnselectedCharacters}
+                />
+              </TabPanel>
+            </Tabs>
+          )}
         </div>
         <div className="py-12">
-          <a href="https://github.com/tractorcow/genshin-teamspin" className="underline" target="_blank"
-             rel="noreferrer noopener">
+          <a
+            href="https://github.com/tractorcow/genshin-teamspin"
+            className="underline"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             Contribute to this app on Github!
           </a>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
