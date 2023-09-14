@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "/genshin-teamspin/static/css/main.6bf0779a.css",
-    "main.js": "/genshin-teamspin/static/js/main.7862413e.js",
+    "main.css": "/genshin-teamspin/static/css/main.7ee71ac1.css",
+    "main.js": "/genshin-teamspin/static/js/main.cc4715e0.js",
     "static/js/787.ffe6b1db.chunk.js": "/genshin-teamspin/static/js/787.ffe6b1db.chunk.js",
     "static/media/background.jpg": "/genshin-teamspin/static/media/background.e3037c3ea5ee5519cd16.jpg",
     "static/media/blank-profile.webp": "/genshin-teamspin/static/media/blank-profile.c25f7884dc4b426be9dd.webp",
+    "static/media/element_cryo.svg": "/genshin-teamspin/static/media/element_cryo.3bdb562015df89a20e96599718419039.svg",
+    "static/media/element_dendro.svg": "/genshin-teamspin/static/media/element_dendro.97c848cc4e28377348d86edf1d79fb2d.svg",
+    "static/media/element_hydro.svg": "/genshin-teamspin/static/media/element_hydro.dbcf75ab6927f7b73d17f4fb71f621ac.svg",
+    "static/media/element_anemo.svg": "/genshin-teamspin/static/media/element_anemo.8fbd12d60899bee429fa3c3fbd9e131b.svg",
+    "static/media/element_pyro.svg": "/genshin-teamspin/static/media/element_pyro.babb0a5d6f255ce987686e321062adf8.svg",
+    "static/media/element_geo.svg": "/genshin-teamspin/static/media/element_geo.61c55e600f72d666196bdb5307a35bf2.svg",
+    "static/media/element_electro.svg": "/genshin-teamspin/static/media/element_electro.178efeba7aa67dca8d20a69fdcaebfaa.svg",
     "index.html": "/genshin-teamspin/index.html",
-    "main.6bf0779a.css.map": "/genshin-teamspin/static/css/main.6bf0779a.css.map",
-    "main.7862413e.js.map": "/genshin-teamspin/static/js/main.7862413e.js.map",
+    "main.7ee71ac1.css.map": "/genshin-teamspin/static/css/main.7ee71ac1.css.map",
+    "main.cc4715e0.js.map": "/genshin-teamspin/static/js/main.cc4715e0.js.map",
     "787.ffe6b1db.chunk.js.map": "/genshin-teamspin/static/js/787.ffe6b1db.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6bf0779a.css",
-    "static/js/main.7862413e.js"
+    "static/css/main.7ee71ac1.css",
+    "static/js/main.cc4715e0.js"
   ]
 }
