@@ -2,8 +2,10 @@ import CharacterIcon from './CharacterIcon'
 import BlankIcon from './BlankIcon'
 import React, { useState } from 'react'
 import { Character } from 'genshin-db'
-import { filterNamed } from '../lib/queries'
-import { getTeamType, selectRandomFour, teamTypes } from '../lib/selector'
+import { filterNamed, findTeamType } from '../lib/queries'
+import teamTypes from '../lib/teamTypes'
+import { Gender } from '../types/teams'
+import { OptionBuilder } from '../lib/builders/OptionBuilder'
 
 interface TeamGeneratorProps {
   characters: Array<Character>
@@ -19,14 +21,22 @@ const TeamGenerator = ({
   name,
 }: TeamGeneratorProps) => {
   const selectedCharacters = filterNamed(characters, team)
-  const generateTeam = () => {
-    setTeam(selectRandomFour(characters))
-  }
   const [showOptions, setShowOptions] = useState(false)
   const [teamType, setTeamType] = useState('')
-  const [selection, setSelection] = useState('all')
+  const [gender, setGender] = useState<Gender | undefined>(undefined)
   const [includeHealer, setIncludeHealer] = useState(false)
-  const selectedType = getTeamType(teamType)
+  const selectedType = findTeamType(teamType, teamTypes)
+
+  // Trigger option builder
+  const generateTeam = () => {
+    const builder = new OptionBuilder(selectedType, gender, includeHealer)
+    const team = builder.build(characters)
+    if (!team) {
+      alert("Sorry, I couldn't find enough members to make that kind of team")
+    } else {
+      setTeam(team.map((character) => character.name))
+    }
+  }
 
   return (
     <div className="mb-12">
@@ -98,8 +108,8 @@ const TeamGenerator = ({
                   className="form-radio"
                   name="selection"
                   value="all"
-                  checked={selection === 'all'}
-                  onChange={(e) => setSelection(e.target.value)}
+                  checked={!gender}
+                  onChange={(e) => setGender(undefined)}
                 />
                 <span className="ml-2">All</span>
               </label>
@@ -108,9 +118,9 @@ const TeamGenerator = ({
                   type="radio"
                   className="form-radio"
                   name="selection"
-                  value="male"
-                  checked={selection === 'male'}
-                  onChange={(e) => setSelection(e.target.value)}
+                  value={Gender.Male}
+                  checked={gender === Gender.Male}
+                  onChange={(e) => setGender(Gender.Male)}
                 />
                 <span className="ml-2">Male Only</span>
               </label>
@@ -119,9 +129,9 @@ const TeamGenerator = ({
                   type="radio"
                   className="form-radio"
                   name="selection"
-                  value="female"
-                  checked={selection === 'female'}
-                  onChange={(e) => setSelection(e.target.value)}
+                  value={Gender.Female}
+                  checked={gender === Gender.Female}
+                  onChange={(e) => setGender(Gender.Female)}
                 />
                 <span className="ml-2">Female Only</span>
               </label>

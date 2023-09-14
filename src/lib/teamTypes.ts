@@ -1,56 +1,6 @@
-import type { Character } from 'genshin-db'
-import { getNames } from './queries'
+import { Element, TypeGroup } from '../types/teams'
 
-export enum Element {
-  Cryo = 'Cryo',
-  Pyro = 'Pyro',
-  Hydro = 'Hydro',
-  Electro = 'Electro',
-  Geo = 'Geo',
-  Anemo = 'Anemo',
-  Dendro = 'Dendro',
-}
-
-export enum WeaponType {
-  Claymore = 'Claymore',
-  Sword = 'Sword',
-  Bow = 'Bow',
-  Catalyst = 'Catalyst',
-  Polearm = 'Polearm',
-}
-
-export enum Gender {
-  Male = 'Male',
-  Female = 'Female',
-}
-
-// Restriction rules for a team member. Can be empty if slot is open to all.
-type TeamMemberType = {
-  // For specific named character
-  name?: string
-  // 'same' means same as any other character, different means different to all other characters
-  element?: Element | 'same' | 'different' | Array<Element>
-  // for specific weapon type
-  weapontype?: WeaponType
-  // gender
-  gender?: Gender
-}
-
-type TeamType = {
-  name: string
-  description: string
-  // Note: Characters are matched left to right, so use more restrictive
-  // rules first, with 'different' element rules at the end
-  members: [TeamMemberType, TeamMemberType, TeamMemberType, TeamMemberType]
-}
-
-// Simple grouping of types
-type TypeGroup = {
-  group: string
-  types: Array<TeamType>
-}
-
-export const teamTypes: Array<TypeGroup> = [
+const teamTypes: Array<TypeGroup> = [
   {
     group: 'Basic Reactions',
     types: [
@@ -486,43 +436,4 @@ export const teamTypes: Array<TypeGroup> = [
   },
 ]
 
-/**
- * Get random team from this list
- * @param characters
- */
-export function selectRandomFour(characters: Array<Character>): string[] {
-  const names = getNames(characters)
-
-  // If there are less than 4 names left, return them all
-  if (names.length <= 4) {
-    return names
-  }
-
-  // Randomly select 4 names from the filtered list
-  const selectedNames: string[] = []
-  for (let i = 0; i < 4; i++) {
-    const randomIndex = Math.floor(Math.random() * names.length)
-    selectedNames.push(names[randomIndex])
-    names.splice(randomIndex, 1) // Remove the selected name to avoid duplicates
-  }
-  return selectedNames
-}
-
-/**
- * Get a team type config by name
- *
- * @param type
- */
-export function getTeamType(type: string | undefined): TeamType | undefined {
-  if (!type) {
-    return undefined
-  }
-  for (const group of teamTypes) {
-    for (const nextType of group.types) {
-      if (nextType.name === type) {
-        return nextType
-      }
-    }
-  }
-  return undefined
-}
+export default teamTypes
