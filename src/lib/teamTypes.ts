@@ -403,20 +403,10 @@ const teamTypes: Array<TypeGroup> = [
     group: 'Specialist Teams',
     types: [
       {
-        name: 'Mono-Elemental',
-        description: 'All characters of the same element',
-        members: [
-          {},
-          { element: 'same' },
-          { element: 'same' },
-          { element: 'same' },
-        ],
-      },
-      {
         name: 'Gorou Triple-Geo',
         description: 'Miss Hina and her entourage',
         members: [
-          { name: 'Gorou' },
+          { element: Element.Geo, name: 'Gorou' },
           { element: Element.Geo },
           { element: Element.Geo },
           { element: 'different' },
@@ -426,10 +416,21 @@ const teamTypes: Array<TypeGroup> = [
         name: 'Nilou Bountiful Bloom',
         description: 'Nilou and hydro / dendro only for her special reaction',
         members: [
-          { name: 'Nilou' },
+          { element: Element.Hydro, name: 'Nilou' },
           { element: Element.Dendro },
           { element: [Element.Dendro, Element.Hydro] },
           { element: [Element.Dendro, Element.Hydro] },
+        ],
+      },
+      {
+        name: 'Iniquitous Baptist',
+        description:
+          "Includes all elements required to defeat John's special triple shields",
+        members: [
+          { element: Element.Dendro }, // Electro / Hydro shield
+          { element: Element.Hydro }, // Pyro shield
+          { element: Element.Pyro }, // Electro / Cryo shield
+          {},
         ],
       },
     ],
