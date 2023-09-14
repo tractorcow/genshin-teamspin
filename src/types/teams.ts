@@ -1,3 +1,5 @@
+import type { Character } from 'genshin-db'
+
 export enum Element {
   Cryo = 'Cryo',
   Pyro = 'Pyro',
@@ -46,3 +48,5 @@ export type TypeGroup = {
   group: string
   types: Array<TeamType>
 }
+
+export type CompleteTeam = [Character, Character, Character, Character]

@@ -1,6 +1,6 @@
 import { genshinDbType } from './genshindb'
 import type { Character } from 'genshin-db'
-import { Gender, TeamType, TypeGroup } from '../types/teams'
+import { Element, Gender, TeamType, TypeGroup } from '../types/teams'
 
 /**
  * Get all characters
@@ -49,10 +49,10 @@ export const getNames = (characters: Array<Character>) => {
  * @param type
  * @param teamTypes
  */
-export function findTeamType(
+export const findTeamType = (
   type: string | undefined,
   teamTypes: Array<TypeGroup>
-): TeamType | undefined {
+): TeamType | undefined => {
   if (!type) {
     return undefined
   }
@@ -66,14 +66,42 @@ export function findTeamType(
   return undefined
 }
 
+export const isArrayOfElements = (
+  elements: any
+): elements is Array<Element> => {
+  return Array.isArray(elements)
+}
+
+export const isElement = (element: any): element is Element => {
+  return (
+    element &&
+    typeof element === 'string' &&
+    element !== 'same' &&
+    element !== 'different'
+  )
+}
+
 /**
- * Run team generator
- *
- * @param characters
+ * Shuffle array using https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+ * @param input
  */
-export function generateTeamWithOptions(
-  characters: Array<Character>,
-  selectedType: TeamType | undefined,
-  gender: Gender | undefined,
-  includeHeader: boolean
-) {}
+export const shuffle = <T>(input: Array<T>): Array<T> => {
+  const array = [...input] // Make immutable
+  let currentIndex = array.length
+  let randomIndex
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex--
+
+    // And swap it with the current element.
+    ;[array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ]
+  }
+
+  return array
+}
