@@ -45,6 +45,7 @@ const CharacterList = ({
           >
             <option value="Dendro">Dendro</option>
             <option value="Hydro">Hydro</option>
+            <option value="Electro">Electro</option>
             <option value="Anemo">Anemo</option>
             <option value="Geo">Geo</option>
           </select>
