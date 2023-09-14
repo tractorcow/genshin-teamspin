@@ -1,0 +1,4 @@
+# Ignore auto-generated files
+build
+node_modules
+src/lib/genshindb-nodata.js

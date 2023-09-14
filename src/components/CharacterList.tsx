@@ -1,35 +1,67 @@
 // SquareGrid.tsx
-import React from 'react';
-import CharacterIcon from "./CharacterIcon";
-import { UnselectedCharactersHook } from "../state/UnselectedCharacters";
-import type { genshinDbType } from "../lib/genshindb";
+import React from 'react'
+import CharacterIcon from './CharacterIcon'
+import { UnselectedCharactersHook } from '../state/UnselectedCharacters'
+import type { Character } from 'genshin-db'
+import { ElementType } from '../types/teams'
 
 interface CharacterListProps extends UnselectedCharactersHook {
-  genshindb: genshinDbType
-  names: string[]
+  characters: Array<Character>
 }
 
-const CharacterList = ({ genshindb, names, unselectedCharacters, setUnselectedCharacters }: CharacterListProps) => {
-  const toggle = (name: string) => {
-    console.log(`Toggle ${ name }`)
-    if (unselectedCharacters.includes(name)) {
-      setUnselectedCharacters(unselectedCharacters.filter(next => next !== name))
+const CharacterList = ({
+  characters,
+  unselectedCharacters,
+  setUnselectedCharacters,
+  mcElement,
+  setMCElement,
+}: CharacterListProps) => {
+  /**
+   * Toggle string inside the unselected characters list
+   *
+   * @param character
+   */
+  const toggle = (character: Character) => {
+    if (unselectedCharacters.includes(character.name)) {
+      setUnselectedCharacters(
+        unselectedCharacters.filter((next) => next !== character.name)
+      )
     } else {
-      setUnselectedCharacters([ ...unselectedCharacters, name ])
+      setUnselectedCharacters([...unselectedCharacters, character.name])
     }
   }
+
   return (
     <div className="">
+      <div className="p-4 mb-12 border rounded border-gray-400 w-full max-w-md">
+        <div className="flex flex-row">
+          <label className="block text-gray-700 font-bold mr-6 leading-10">
+            MC&nbsp;Element
+          </label>
+          <select
+            className="p-2"
+            value={mcElement}
+            onChange={(e) => setMCElement(e.target.value as ElementType)}
+          >
+            <option value="Dendro">Dendro</option>
+            <option value="Hydro">Hydro</option>
+            <option value="Anemo">Anemo</option>
+            <option value="Geo">Geo</option>
+          </select>
+        </div>
+      </div>
       <div className="flex flex-wrap gap-4">
-        { names.map(name => (
+        {characters.map((character) => (
           <CharacterIcon
-            genshindb={ genshindb }
-            name={ name }
-            onClick={ () => toggle(name) }
-            selected={ !unselectedCharacters.includes(name) }/>)) }
+            key={character.name}
+            character={character}
+            onClick={() => toggle(character)}
+            selected={!unselectedCharacters.includes(character.name)}
+          />
+        ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CharacterList;
+export default CharacterList
