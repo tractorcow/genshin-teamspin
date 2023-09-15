@@ -10,6 +10,17 @@ type CharacterProps = {
   onClick?: MouseEventHandler
 }
 
+const imageOverrides: Record<string, string> = {
+  Kirara:
+    'https://act.hoyoverse.com/hk4e/e20200928calculate/item_icon_u1ff2e/83647f585437226dc6ec12de6a9877c2.png',
+  Lynette:
+    'https://act.hoyoverse.com/hk4e/e20200928calculate/item_icon_u1ff2e/1890b4f07e704aecfcce53d714eaa2cd.png',
+  Lyney:
+    'https://act.hoyoverse.com/hk4e/e20200928calculate/item_icon_u1ff2e/8841a1d704877886990d8bc21fbe0385.png',
+  Freminet:
+    'https://act.hoyoverse.com/hk4e/e20200928calculate/item_icon_u1ff2e/d85402747078a066815d921130aaec62.png',
+}
+
 const CharacterIcon = ({
   character,
   selected = true,
@@ -27,6 +38,8 @@ const CharacterIcon = ({
 
   const active = selected ? 'opacity-100' : 'opacity-50'
   const clickable = onClick ? 'cursor-pointer' : ''
+  const url =
+    imageOverrides?.[character.name] || character.images?.icon || blankIcon
 
   return (
     <div
@@ -37,11 +50,7 @@ const CharacterIcon = ({
       onClick={onClick}
     >
       <div className={classnames('w-40 h-40 relative', gradient, active)}>
-        <img
-          className="w-40 h-40"
-          src={character.images?.icon || blankIcon}
-          alt={character.name}
-        />
+        <img className="w-40 h-40" src={url} alt={character.name} />
         <div className="absolute left-1 top-1 w-8 h-8 rounded-2xl bg-gray-700 p-1">
           <ElementIcon element={character.element} />
         </div>
