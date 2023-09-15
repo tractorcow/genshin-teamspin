@@ -51,9 +51,10 @@ const CharacterList = ({
           </select>
         </div>
       </div>
-      <div className="flex flex-wrap gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-4 place-items-center">
         {characters.map((character) => (
           <CharacterIcon
+            className="w-full max-w-[15rem] md:max-w-[10rem]"
             key={character.name}
             character={character}
             onClick={() => toggle(character)}

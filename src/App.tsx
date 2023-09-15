@@ -27,7 +27,7 @@ function App() {
       className="min-h-screen bg-yellow-100 bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${background})` }}
     >
-      <div className="container w-[1024px] px-20 mx-auto bg-opacity-90 bg-white min-h-screen">
+      <div className="container px-6 sm:px-12 mx-auto bg-opacity-90 bg-white min-h-screen max-w-[768px]">
         <header className="py-12">
           <h1 className="text-3xl pb-4 font-bold">
             Genshin Impact - Random Team Builder
@@ -47,10 +47,24 @@ function App() {
               onSelect={(index) => setTabIndex(index)}
             >
               <TabList className="mb-4 flex flex-row gap-6">
-                <Tab className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+                <Tab
+                  className={classnames(
+                    'transition-all ease-in-out duration-300 border border-purple-500 bg-purple-500 text-white hover:bg-purple-600 font-bold py-2 px-4 rounded cursor-pointer',
+                    tabIndex === 0
+                      ? 'bg-purple-700 scale-105'
+                      : 'bg-purple-400 scale-95'
+                  )}
+                >
                   Team Builder
                 </Tab>
-                <Tab className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+                <Tab
+                  className={classnames(
+                    'transition-all ease-in-out duration-300 border border-teal-500 bg-teal-500 text-white hover:bg-teal-600 font-bold py-2 px-4 rounded cursor-pointer',
+                    tabIndex === 1
+                      ? 'bg-teal-700 scale-105'
+                      : 'bg-teal-400 scale-95'
+                  )}
+                >
                   Character Selector
                 </Tab>
               </TabList>

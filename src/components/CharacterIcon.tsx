@@ -8,6 +8,7 @@ type CharacterProps = {
   character: Character
   selected?: boolean
   onClick?: MouseEventHandler
+  className?: string
 }
 
 const imageOverrides: Record<string, string> = {
@@ -25,6 +26,7 @@ const CharacterIcon = ({
   character,
   selected = true,
   onClick,
+  className,
 }: CharacterProps) => {
   let gradient =
     'bg-gradient-to-b from-rarity-five-star-300 to-rarity-five-star-500'
@@ -44,13 +46,24 @@ const CharacterIcon = ({
   return (
     <div
       className={classnames(
-        'w-40 h-52 bg-red-200 rounded-xl overflow-hidden border-2',
+        className,
+        'bg-red-200 rounded-xl overflow-hidden border-2',
         clickable
       )}
       onClick={onClick}
     >
-      <div className={classnames('w-40 h-40 relative', gradient, active)}>
-        <img className="w-40 h-40" src={url} alt={character.name} />
+      <div
+        className={classnames(
+          'w-full aspect-square relative',
+          gradient,
+          active
+        )}
+      >
+        <img
+          className="absolute left-0 right-0 top-0 bottom-0"
+          src={url}
+          alt={character.name}
+        />
         <div className="absolute left-1 top-1 w-8 h-8 rounded-2xl bg-gray-700 p-1">
           <ElementIcon element={character.element} />
         </div>

@@ -6,6 +6,7 @@ import { filterNamed, findTeamType, healers } from '../lib/queries'
 import teamTypes from '../lib/teamTypes'
 import { Gender } from '../types/teams'
 import { OptionBuilder } from '../lib/builders/OptionBuilder'
+import classnames from 'classnames'
 
 interface TeamGeneratorProps {
   characters: Array<Character>
@@ -41,36 +42,46 @@ const TeamGenerator = ({
   }
 
   return (
-    <div className="mb-12">
-      <div className="grid grid-cols-4 gap-4 mb-4">
+    <div className="mb-12 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 place-items-center">
         {selectedCharacters.map((character) => (
-          <CharacterIcon key={`char_${character.name}`} character={character} />
+          <CharacterIcon
+            className="w-full max-w-[15rem] md:max-w-[10rem]"
+            key={`char_${character.name}`}
+            character={character}
+          />
         ))}
         {Array.from({ length: 4 - team.length }).map((_, index) => (
-          <BlankIcon key={`space_${index}`} />
+          <BlankIcon
+            className="w-full max-w-[15rem] md:max-w-[10rem]"
+            key={`space_${index}`}
+          />
         ))}
       </div>
 
       <div className="mb-4 flex flex-row gap-6">
         <button
-          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+          className="border border-green-500 bg-green-500 text-white hover:bg-green-600 font-bold py-2 px-4 rounded"
           onClick={generateTeam}
         >
-          Generate {name}
+          Generate Team
         </button>
 
         <button
-          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+          className="border border-red-500 bg-red-500 text-white hover:bg-red-600 font-bold py-2 px-4 rounded"
           onClick={() => setTeam([])}
         >
           Clear {name}
         </button>
 
         <button
-          className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
+          className={classnames(
+            'border border-blue-500 rounded p-2 transition duration-300 ease-in-out text-white hover:bg-blue-600 font-bold py-2 px-4',
+            showOptions ? 'bg-blue-700' : 'bg-blue-400'
+          )}
           onClick={() => setShowOptions((shown) => !shown)}
         >
-          {showOptions ? 'Hide options' : 'Show extra options'}
+          {showOptions ? 'Hide options' : 'Show options'}
         </button>
       </div>
 
