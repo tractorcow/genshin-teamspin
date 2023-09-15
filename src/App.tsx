@@ -27,7 +27,7 @@ function App() {
       className="min-h-screen bg-yellow-100 bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${background})` }}
     >
-      <div className="container w-[1024px] px-20 mx-auto bg-opacity-90 bg-white min-h-screen">
+      <div className="container px-6 sm:px-12 mx-auto bg-opacity-90 bg-white min-h-screen max-w-[768px]">
         <header className="py-12">
           <h1 className="text-3xl pb-4 font-bold">
             Genshin Impact - Random Team Builder

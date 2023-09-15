@@ -41,13 +41,20 @@ const TeamGenerator = ({
   }
 
   return (
-    <div className="mb-12">
-      <div className="grid grid-cols-4 gap-4 mb-4">
+    <div className="mb-12 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 place-items-center">
         {selectedCharacters.map((character) => (
-          <CharacterIcon key={`char_${character.name}`} character={character} />
+          <CharacterIcon
+            className="w-full max-w-[15rem] md:max-w-[10rem]"
+            key={`char_${character.name}`}
+            character={character}
+          />
         ))}
         {Array.from({ length: 4 - team.length }).map((_, index) => (
-          <BlankIcon key={`space_${index}`} />
+          <BlankIcon
+            className="w-full max-w-[15rem] md:max-w-[10rem]"
+            key={`space_${index}`}
+          />
         ))}
       </div>
 
