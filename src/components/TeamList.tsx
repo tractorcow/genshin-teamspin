@@ -22,13 +22,13 @@ const TeamList = ({ characters }: TeamBuilderProps) => {
           characters={team1Characters}
           team={team1}
           setTeam={setTeam1}
-          name={'First Team'}
+          name={'first'}
         />
         <TeamGenerator
           characters={team2Characters}
           team={team2}
           setTeam={setTeam2}
-          name={'Second Team'}
+          name={'second'}
         />
       </div>
     </div>
