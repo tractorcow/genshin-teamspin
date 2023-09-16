@@ -71,7 +71,7 @@ const TeamGenerator = ({
           className="border border-red-500 bg-red-500 text-white hover:bg-red-600 font-bold py-2 px-4 rounded"
           onClick={() => setTeam([])}
         >
-          Clear {name}
+          Clear Team
         </button>
 
         <button
@@ -119,7 +119,7 @@ const TeamGenerator = ({
                 <input
                   type="radio"
                   className="form-radio"
-                  name="selection"
+                  name={`selection_${name}`}
                   value="all"
                   checked={!gender}
                   onChange={(e) => setGender(undefined)}
@@ -130,7 +130,7 @@ const TeamGenerator = ({
                 <input
                   type="radio"
                   className="form-radio"
-                  name="selection"
+                  name={`selection_${name}`}
                   value={Gender.Male}
                   checked={gender === Gender.Male}
                   onChange={(e) => setGender(Gender.Male)}
@@ -141,7 +141,7 @@ const TeamGenerator = ({
                 <input
                   type="radio"
                   className="form-radio"
-                  name="selection"
+                  name={`selection_${name}`}
                   value={Gender.Female}
                   checked={gender === Gender.Female}
                   onChange={(e) => setGender(Gender.Female)}
