@@ -3,21 +3,24 @@ import type { Character } from 'genshin-db'
 import { ElementType, TeamType, TypeGroup } from '../types/teams'
 
 export const healers = [
-  // 'Gorou', // Only @C4
-  // 'Xingqiu', // Questionable?
-  'Noelle',
   'Baizhu',
-  'Mika',
-  'Yaoyao',
-  'Dori',
   'Barbara',
-  'Sayu',
-  'Diona',
-  'Qiqi',
-  'Kuki Shinobu',
-  'Jean',
-  'Sangonomiya Kokomi',
   'Bennett',
+  'Charlotte',
+  'Diona',
+  'Dori',
+  'Furina',
+  // 'Gorou', // Only @C4
+  'Jean',
+  'Kuki Shinobu',
+  'Mika',
+  'Noelle',
+  'Qiqi',
+  'Sayu',
+  'Sangonomiya Kokomi',
+  // 'Xingqiu', // Questionably
+  'Yaoyao',
+  // 'Zhongli' // only @C6
 ]
 
 /**
