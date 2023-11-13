@@ -20,6 +20,14 @@ const imageOverrides: Record<string, string> = {
     'https://act.hoyoverse.com/hk4e/e20200928calculate/item_icon_u1ff2e/8841a1d704877886990d8bc21fbe0385.png',
   Freminet:
     'https://act.hoyoverse.com/hk4e/e20200928calculate/item_icon_u1ff2e/d85402747078a066815d921130aaec62.png',
+  Charlotte:
+    'https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png',
+  Furina:
+    'https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Furina_Icon.png',
+  Neuvillette:
+    'https://static.wikia.nocookie.net/gensin-impact/images/2/21/Neuvillette_Icon.png',
+  Wriothesley:
+    'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png',
 }
 
 const CharacterIcon = ({
