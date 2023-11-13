@@ -18,14 +18,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Geo,
             ],
           },
-          {
-            element: [
-              ElementType.Dendro,
-              ElementType.Electro,
-              ElementType.Anemo,
-              ElementType.Geo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -47,6 +40,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Hydro,
               ElementType.Electro,
               ElementType.Pyro,
+              ElementType.Anemo,
             ],
           },
           { element: 'different' },
@@ -71,6 +65,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Hydro,
               ElementType.Electro,
               ElementType.Pyro,
+              ElementType.Geo,
             ],
           },
           { element: 'different' },
@@ -90,14 +85,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Anemo,
             ],
           },
-          {
-            element: [
-              ElementType.Hydro,
-              ElementType.Electro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -114,14 +102,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Anemo,
             ],
           },
-          {
-            element: [
-              ElementType.Pyro,
-              ElementType.Electro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -138,14 +119,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Anemo,
             ],
           },
-          {
-            element: [
-              ElementType.Cryo,
-              ElementType.Hydro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -162,14 +136,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Anemo,
             ],
           },
-          {
-            element: [
-              ElementType.Cryo,
-              ElementType.Pyro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -186,14 +153,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Anemo,
             ],
           },
-          {
-            element: [
-              ElementType.Cryo,
-              ElementType.Electro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -210,14 +170,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Anemo,
             ],
           },
-          {
-            element: [
-              ElementType.Cryo,
-              ElementType.Pyro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -234,14 +187,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Anemo,
             ],
           },
-          {
-            element: [
-              ElementType.Dendro,
-              ElementType.Pyro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -258,14 +204,7 @@ const teamTypes: Array<TypeGroup> = [
               ElementType.Anemo,
             ],
           },
-          {
-            element: [
-              ElementType.Dendro,
-              ElementType.Hydro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
     ],
@@ -280,14 +219,7 @@ const teamTypes: Array<TypeGroup> = [
           { element: ElementType.Cryo },
           { element: ElementType.Cryo },
           { element: ElementType.Hydro },
-          {
-            element: [
-              ElementType.Cryo,
-              ElementType.Hydro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -297,15 +229,7 @@ const teamTypes: Array<TypeGroup> = [
           { element: ElementType.Hydro },
           { element: ElementType.Dendro },
           { element: ElementType.Electro },
-          {
-            element: [
-              ElementType.Dendro,
-              ElementType.Hydro,
-              ElementType.Electro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -315,15 +239,7 @@ const teamTypes: Array<TypeGroup> = [
           { element: ElementType.Hydro },
           { element: ElementType.Dendro },
           { element: ElementType.Pyro },
-          {
-            element: [
-              ElementType.Dendro,
-              ElementType.Hydro,
-              ElementType.Pyro,
-              ElementType.Geo,
-              ElementType.Anemo,
-            ],
-          },
+          {},
         ],
       },
 
@@ -334,14 +250,7 @@ const teamTypes: Array<TypeGroup> = [
           { element: ElementType.Dendro },
           { element: ElementType.Electro },
           { element: ElementType.Electro },
-          {
-            element: [
-              ElementType.Dendro,
-              ElementType.Electro,
-              ElementType.Anemo,
-              ElementType.Geo,
-            ],
-          },
+          {},
         ],
       },
       {
@@ -351,14 +260,7 @@ const teamTypes: Array<TypeGroup> = [
           { element: ElementType.Dendro },
           { element: ElementType.Dendro },
           { element: ElementType.Electro },
-          {
-            element: [
-              ElementType.Dendro,
-              ElementType.Electro,
-              ElementType.Anemo,
-              ElementType.Geo,
-            ],
-          },
+          {},
         ],
       },
     ],
