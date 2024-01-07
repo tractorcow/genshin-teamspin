@@ -1,22 +1,8 @@
 import type { Character } from 'genshin-db'
 
-export enum ElementType {
-  Cryo = 'Cryo',
-  Pyro = 'Pyro',
-  Hydro = 'Hydro',
-  Electro = 'Electro',
-  Geo = 'Geo',
-  Anemo = 'Anemo',
-  Dendro = 'Dendro',
-}
+export type ElementType = Character['elementType']
 
-export enum WeaponType {
-  Claymore = 'Claymore',
-  Sword = 'Sword',
-  Bow = 'Bow',
-  Catalyst = 'Catalyst',
-  Polearm = 'Polearm',
-}
+export type WeaponType = Character['weaponType']
 
 export enum Gender {
   Male = 'Male',

@@ -36,7 +36,7 @@ export const getCharacters = (
   return names.map((name) => {
     const character = genshindb.characters(name) as Character
     if (['Lumine', 'Aether'].includes(character.name)) {
-      character.element = `${mcElement}`
+      character.elementType = `${mcElement}`
     }
     return character
   })

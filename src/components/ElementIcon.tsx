@@ -8,25 +8,26 @@ import Geo from '../images/element_geo.svg'
 import Dendro from '../images/element_dendro.svg'
 
 type ElementIconProps = {
-  element: string
+  element: ElementType
 }
 
-const getSource = (element: string): string => {
+const getSource = (element: ElementType): string => {
   switch (element) {
-    case 'Pyro':
+    case 'ELEMENT_PYRO':
       return Pyro
-    case 'Hydro':
+    case 'ELEMENT_HYDRO':
       return Hydro
-    case 'Cryo':
+    case 'ELEMENT_CRYO':
       return Cryo
-    case 'Electro':
+    case 'ELEMENT_ELECTRO':
       return Electro
-    case 'Anemo':
+    case 'ELEMENT_ANEMO':
       return Anemo
-    case 'Geo':
+    case 'ELEMENT_GEO':
       return Geo
-    case 'None': // MC
-    case 'Dendro':
+    case 'ELEMENT_NONE': // MC, default to dendro
+      return Dendro
+    case 'ELEMENT_DENDRO':
       return Dendro
     default:
       throw new Error(`Invalid element: ${element}`)

@@ -15,8 +15,13 @@ const useUnselectedCharacters = (): UnselectedCharactersHook => {
     localStorage.getItem('unselectedCharacters') || '[]'
   )
 
+  // Note: ignore old data from before the element rename
+  let rawMcElement = localStorage.getItem('mcElement')
+  if (rawMcElement && !rawMcElement.startsWith('ELEMENT_')) {
+    rawMcElement = null
+  }
   const initialMCElement: ElementType =
-    (localStorage.getItem('mcElement') as ElementType) || ElementType.Dendro
+    (rawMcElement as ElementType) || 'ELEMENT_DENDRO'
 
   // Create state
   const [unselectedCharacters, setInternalUnselectedCharacters] =

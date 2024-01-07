@@ -43,11 +43,11 @@ const CharacterList = ({
             value={mcElement}
             onChange={(e) => setMCElement(e.target.value as ElementType)}
           >
-            <option value="Dendro">Dendro</option>
-            <option value="Hydro">Hydro</option>
-            <option value="Electro">Electro</option>
-            <option value="Anemo">Anemo</option>
-            <option value="Geo">Geo</option>
+            <option value="ELEMENT_DENDRO">Dendro</option>
+            <option value="ELEMENT_HYDRO">Hydro</option>
+            <option value="ELEMENT_ELECTRO">Electro</option>
+            <option value="ELEMENT_ANEMO">Anemo</option>
+            <option value="ELEMENT_GEO">Geo</option>
           </select>
         </div>
       </div>
