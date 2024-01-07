@@ -57,7 +57,7 @@ export class TeamTypeBuilder implements Builder {
     // Fail "must have different element" check
     if (
       teamMemberType.element === 'different' &&
-      currentElements.includes(character.element as ElementType)
+      currentElements.includes(character.elementType)
     ) {
       return false
     }
@@ -65,7 +65,7 @@ export class TeamTypeBuilder implements Builder {
     // Fail "must have same element" check
     if (
       teamMemberType.element === 'same' &&
-      !currentElements.includes(character.element as ElementType)
+      !currentElements.includes(character.elementType)
     ) {
       return false
     }
@@ -73,7 +73,7 @@ export class TeamTypeBuilder implements Builder {
     // Fail "must be element" check
     if (
       isElement(teamMemberType.element) &&
-      teamMemberType.element !== character.element
+      teamMemberType.element !== character.elementType
     ) {
       return false
     }
@@ -81,7 +81,7 @@ export class TeamTypeBuilder implements Builder {
     // Fail "must be one of element" list
     if (
       isArrayOfElements(teamMemberType.element) &&
-      !teamMemberType.element.includes(character.element as ElementType)
+      !teamMemberType.element.includes(character.elementType)
     ) {
       return false
     }
@@ -89,7 +89,7 @@ export class TeamTypeBuilder implements Builder {
     // Fail "must have weapon" check
     if (
       teamMemberType.weapontype &&
-      character.weapontype !== teamMemberType.weapontype
+      character.weaponType !== teamMemberType.weapontype
     ) {
       return false
     }
@@ -128,7 +128,7 @@ export class TeamTypeBuilder implements Builder {
         if (this.matchesRule(character, teamMemberType, currentElements)) {
           // Place this character, remember their element
           placements[i] = character
-          currentElements.push(character.element as ElementType)
+          currentElements.push(character.elementType)
           return true
         }
       }

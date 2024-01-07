@@ -60,10 +60,8 @@ export class TeamTypeFilter implements Filter {
     const allowedWeapons = this.getAllowedWeapons()
     return characters.filter(
       (character) =>
-        (!allowedElements ||
-          allowedElements.includes(character.element as ElementType)) &&
-        (!allowedWeapons ||
-          allowedWeapons.includes(character.weapontype as WeaponType))
+        (!allowedElements || allowedElements.includes(character.elementType)) &&
+        (!allowedWeapons || allowedWeapons.includes(character.weaponType))
     )
   }
 }

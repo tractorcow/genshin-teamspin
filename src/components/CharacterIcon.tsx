@@ -28,6 +28,10 @@ const imageOverrides: Record<string, string> = {
     'https://static.wikia.nocookie.net/gensin-impact/images/2/21/Neuvillette_Icon.png',
   Wriothesley:
     'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png',
+  Navia:
+    'https://static.wikia.nocookie.net/gensin-impact/images/c/c0/Navia_Icon.png',
+  Chevreuse:
+    'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png',
 }
 
 const CharacterIcon = ({
@@ -41,7 +45,7 @@ const CharacterIcon = ({
   if (character.name === 'Aloy') {
     gradient =
       'bg-gradient-to-b from-rarity-three-star-300 to-rarity-three-star-500'
-  } else if (character.rarity === '4') {
+  } else if (character.rarity === 4) {
     gradient =
       'bg-gradient-to-b from-rarity-four-star-300 to-rarity-four-star-500'
   }
@@ -49,7 +53,9 @@ const CharacterIcon = ({
   const active = selected ? 'opacity-100' : 'opacity-50'
   const clickable = onClick ? 'cursor-pointer' : ''
   const url =
-    imageOverrides?.[character.name] || character.images?.icon || blankIcon
+    imageOverrides?.[character.name] ||
+    character.images?.mihoyo_icon ||
+    blankIcon
 
   return (
     <div
@@ -73,7 +79,7 @@ const CharacterIcon = ({
           alt={character.name}
         />
         <div className="absolute left-1 top-1 w-8 h-8 rounded-2xl bg-gray-700 p-1">
-          <ElementIcon element={character.element} />
+          <ElementIcon element={character.elementType} />
         </div>
       </div>
       <div className="bg-white px-4 text-lg font-bold h-12 flex items-center">
