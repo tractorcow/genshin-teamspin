@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/genshin-teamspin/static/css/main.5d9e61d6.css",
-    "main.js": "/genshin-teamspin/static/js/main.61d936e6.js",
-    "static/js/787.ffe6b1db.chunk.js": "/genshin-teamspin/static/js/787.ffe6b1db.chunk.js",
+    "main.css": "/genshin-teamspin/static/css/main.deb79e1e.css",
+    "main.js": "/genshin-teamspin/static/js/main.410be8c2.js",
+    "static/js/453.5caa03f9.chunk.js": "/genshin-teamspin/static/js/453.5caa03f9.chunk.js",
     "static/media/background.jpg": "/genshin-teamspin/static/media/background.e3037c3ea5ee5519cd16.jpg",
     "static/media/blank-profile.webp": "/genshin-teamspin/static/media/blank-profile.c25f7884dc4b426be9dd.webp",
     "static/media/element_cryo.svg": "/genshin-teamspin/static/media/element_cryo.3bdb562015df89a20e96599718419039.svg",
@@ -13,12 +13,12 @@
     "static/media/element_geo.svg": "/genshin-teamspin/static/media/element_geo.61c55e600f72d666196bdb5307a35bf2.svg",
     "static/media/element_electro.svg": "/genshin-teamspin/static/media/element_electro.178efeba7aa67dca8d20a69fdcaebfaa.svg",
     "index.html": "/genshin-teamspin/index.html",
-    "main.5d9e61d6.css.map": "/genshin-teamspin/static/css/main.5d9e61d6.css.map",
-    "main.61d936e6.js.map": "/genshin-teamspin/static/js/main.61d936e6.js.map",
-    "787.ffe6b1db.chunk.js.map": "/genshin-teamspin/static/js/787.ffe6b1db.chunk.js.map"
+    "main.deb79e1e.css.map": "/genshin-teamspin/static/css/main.deb79e1e.css.map",
+    "main.410be8c2.js.map": "/genshin-teamspin/static/js/main.410be8c2.js.map",
+    "453.5caa03f9.chunk.js.map": "/genshin-teamspin/static/js/453.5caa03f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d9e61d6.css",
-    "static/js/main.61d936e6.js"
+    "static/css/main.deb79e1e.css",
+    "static/js/main.410be8c2.js"
   ]
 }
