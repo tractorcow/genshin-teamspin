@@ -19,6 +19,7 @@ export const healers = [
   'Sayu',
   'Sangonomiya Kokomi',
   // 'Xingqiu', // Questionably
+  'Xianyun',
   'Yaoyao',
   // 'Zhongli' // only @C6
 ]
