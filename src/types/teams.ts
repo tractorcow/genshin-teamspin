@@ -9,6 +9,14 @@ export enum Gender {
   Female = 'Female',
 }
 
+export const WeaponMap: Array<{ type: WeaponType; label: string }> = [
+  { type: 'WEAPON_BOW', label: 'Bow' },
+  { type: 'WEAPON_CATALYST', label: 'Catalyst' },
+  { type: 'WEAPON_CLAYMORE', label: 'Claymore' },
+  { type: 'WEAPON_POLE', label: 'Polearm' },
+  { type: 'WEAPON_SWORD_ONE_HAND', label: 'Sword' },
+]
+
 // Restriction rules for a team member. Can be empty if slot is open to all.
 export type TeamMemberType = {
   // For specific named character

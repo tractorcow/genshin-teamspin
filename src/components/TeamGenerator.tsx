@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Character } from 'genshin-db'
 import { filterNamed, findTeamType, healers } from '../lib/queries'
 import teamTypes from '../lib/teamTypes'
-import { Gender } from '../types/teams'
+import { Gender, WeaponType, WeaponMap } from '../types/teams'
 import { OptionBuilder } from '../lib/builders/OptionBuilder'
 import classnames from 'classnames'
 
@@ -26,13 +26,19 @@ const TeamGenerator = ({
   const [teamType, setTeamType] = useState('')
   const [gender, setGender] = useState<Gender | undefined>(undefined)
   const [includeHealer, setIncludeHealer] = useState(false)
+  const [weapon, setWeapon] = useState<WeaponType | undefined>(undefined)
   const selectedType = findTeamType(teamType, teamTypes)
 
   const healerTooltip = `Note: Healers list includes ${healers.join(', ')}`
 
   // Trigger option builder
   const generateTeam = () => {
-    const builder = new OptionBuilder(selectedType, gender, includeHealer)
+    const builder = new OptionBuilder(
+      selectedType,
+      gender,
+      includeHealer,
+      weapon
+    )
     const team = builder.build(characters)
     if (!team) {
       alert("Sorry, I couldn't find enough members to make that kind of team")
@@ -110,6 +116,22 @@ const TeamGenerator = ({
             {selectedType && (
               <p className="italic text-sm p-3">{selectedType.description}</p>
             )}
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Weapon Type
+            </label>
+            <select
+              className="w-full p-2"
+              value={weapon}
+              onChange={(e) => setWeapon(e.target.value as WeaponType)}
+            >
+              <option value="">Any weapon</option>
+              {WeaponMap.map((type) => (
+                <option value={type.type}>{type.label}</option>
+              ))}
+            </select>
           </div>
 
           <div className="mb-4">

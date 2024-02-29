@@ -1,11 +1,12 @@
 import { Builder, Filter } from '../../types/selector'
 import { Character } from 'genshin-db'
-import { CompleteTeam, Gender, TeamType } from '../../types/teams'
+import { CompleteTeam, Gender, TeamType, WeaponType } from '../../types/teams'
 import { RandomBuilder } from './RandomBuilder'
 import { GenderFilter } from '../filters/GenderFilter'
 import { TeamTypeFilter } from '../filters/TeamTypeFilter'
 import { TeamTypeBuilder } from './TeamTypeBuilder'
 import { HealingBuilder } from './HealingBuilder'
+import { WeaponFilter } from '../filters/WeaponFilter'
 
 /**
  * Generate team based on selected options
@@ -14,15 +15,18 @@ export class OptionBuilder implements Builder {
   selectedType: TeamType | undefined
   gender: Gender | undefined
   includesHealer: boolean
+  weapon: WeaponType | undefined
 
   constructor(
     selectedType: TeamType | undefined,
     gender: Gender | undefined,
-    includeHeader: boolean
+    includeHeader: boolean,
+    weapon: WeaponType | undefined
   ) {
     this.selectedType = selectedType
     this.gender = gender
     this.includesHealer = includeHeader
+    this.weapon = weapon
   }
 
   /**
@@ -35,6 +39,9 @@ export class OptionBuilder implements Builder {
     }
     if (this.selectedType) {
       filters.push(new TeamTypeFilter(this.selectedType))
+    }
+    if (this.weapon) {
+      filters.push(new WeaponFilter(this.weapon))
     }
     return filters
   }
