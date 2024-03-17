@@ -36,6 +36,8 @@ const imageOverrides: Record<string, string> = {
     'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png',
   Xianyun:
     'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Xianyun_Icon.png',
+  Chiori:
+    'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png',
 }
 
 const CharacterIcon = ({

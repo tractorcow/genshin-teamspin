@@ -4,6 +4,8 @@ export type ElementType = Character['elementType']
 
 export type WeaponType = Character['weaponType']
 
+export type Rarity = Character['rarity']
+
 export enum Gender {
   Male = 'Male',
   Female = 'Female',

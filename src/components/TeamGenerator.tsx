@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Character } from 'genshin-db'
 import { filterNamed, findTeamType, healers } from '../lib/queries'
 import teamTypes from '../lib/teamTypes'
-import { Gender, WeaponType, WeaponMap } from '../types/teams'
+import { Gender, WeaponType, WeaponMap, Rarity } from '../types/teams'
 import { OptionBuilder } from '../lib/builders/OptionBuilder'
 import classnames from 'classnames'
 
@@ -25,6 +25,7 @@ const TeamGenerator = ({
   const [showOptions, setShowOptions] = useState(false)
   const [teamType, setTeamType] = useState('')
   const [gender, setGender] = useState<Gender | undefined>(undefined)
+  const [rarity, setRarity] = useState<Rarity | undefined>(undefined)
   const [includeHealer, setIncludeHealer] = useState(false)
   const [weapon, setWeapon] = useState<WeaponType | undefined>(undefined)
   const selectedType = findTeamType(teamType, teamTypes)
@@ -37,7 +38,8 @@ const TeamGenerator = ({
       selectedType,
       gender,
       includeHealer,
-      weapon
+      weapon,
+      rarity
     )
     const team = builder.build(characters)
     if (!team) {
@@ -132,6 +134,45 @@ const TeamGenerator = ({
                 <option value={type.type}>{type.label}</option>
               ))}
             </select>
+          </div>
+
+          <div className="mb-4">
+            <span className="text-gray-700 text-sm font-bold">Rarity</span>
+            <div className="mt-2">
+              <label className="inline-flex items-center">
+                <input
+                  type="radio"
+                  className="form-radio"
+                  name={`rarity_${name}`}
+                  value="all"
+                  checked={!rarity}
+                  onChange={(e) => setRarity(undefined)}
+                />
+                <span className="ml-2">Any rarity</span>
+              </label>
+              <label className="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  className="form-radio"
+                  name={`rarity_${name}`}
+                  value={4}
+                  checked={rarity == 4}
+                  onChange={(e) => setRarity(4)}
+                />
+                <span className="ml-2">4 star only</span>
+              </label>
+              <label className="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  className="form-radio"
+                  name={`rarity_${name}`}
+                  value={5}
+                  checked={rarity == 5}
+                  onChange={(e) => setRarity(5)}
+                />
+                <span className="ml-2">5 star only</span>
+              </label>
+            </div>
           </div>
 
           <div className="mb-4">

@@ -1,12 +1,19 @@
 import { Builder, Filter } from '../../types/selector'
 import { Character } from 'genshin-db'
-import { CompleteTeam, Gender, TeamType, WeaponType } from '../../types/teams'
+import {
+  CompleteTeam,
+  Gender,
+  TeamType,
+  WeaponType,
+  Rarity,
+} from '../../types/teams'
 import { RandomBuilder } from './RandomBuilder'
 import { GenderFilter } from '../filters/GenderFilter'
 import { TeamTypeFilter } from '../filters/TeamTypeFilter'
 import { TeamTypeBuilder } from './TeamTypeBuilder'
 import { HealingBuilder } from './HealingBuilder'
 import { WeaponFilter } from '../filters/WeaponFilter'
+import { RarityFilter } from '../filters/RarityFilter'
 
 /**
  * Generate team based on selected options
@@ -16,17 +23,20 @@ export class OptionBuilder implements Builder {
   gender: Gender | undefined
   includesHealer: boolean
   weapon: WeaponType | undefined
+  rarity: Rarity | undefined
 
   constructor(
     selectedType: TeamType | undefined,
     gender: Gender | undefined,
     includeHeader: boolean,
-    weapon: WeaponType | undefined
+    weapon: WeaponType | undefined,
+    rarity: Rarity | undefined
   ) {
     this.selectedType = selectedType
     this.gender = gender
     this.includesHealer = includeHeader
     this.weapon = weapon
+    this.rarity = rarity
   }
 
   /**
@@ -42,6 +52,9 @@ export class OptionBuilder implements Builder {
     }
     if (this.weapon) {
       filters.push(new WeaponFilter(this.weapon))
+    }
+    if (this.rarity) {
+      filters.push(new RarityFilter(this.rarity))
     }
     return filters
   }
